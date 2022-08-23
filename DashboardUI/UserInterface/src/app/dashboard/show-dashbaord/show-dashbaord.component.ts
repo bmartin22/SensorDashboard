@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-show-dashbaord',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowDashbaordComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:SharedService) { }
 
+  SensorList:any=[];
   ngOnInit(): void {
+    this.refreshSensorList();
   }
 
+  refreshSensorList(){
+    this.service.getSensorList().subscribe(data=>
+      {
+        this.SensorList=data;
+      });
+  }
 }
