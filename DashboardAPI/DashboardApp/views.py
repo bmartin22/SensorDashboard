@@ -8,14 +8,15 @@ from DashboardApp.models import User, Sensor, Reading
 from DashboardApp.serializers import UserSerializer, SensorSerializer, ReadingSerializer
 
 # Create your views here.
-
+@csrf_exempt
 def userApi(request, id=0):
     if request.method == 'GET':
         users = User.objects.all()
         user_serializer = UserSerializer(users, many=True)
+        return JsonResponse(user_serializer.data, safe=False)
 
     elif request.method == 'POST':
-        user_data=JSONParser().parse()
+        user_data=JSONParser().parse(request)
         user_serializer = UserSerializer(data=user_data)
         if user_serializer.is_valid():
             user_serializer.save()
@@ -36,13 +37,15 @@ def userApi(request, id=0):
         user.delete()
         return JsonResponse("Deleted user", safe=False)
 
+@csrf_exempt
 def sensorApi(request, id=0):
     if request.method == 'GET':
-        sensors = Sensor.objects.all()
+        sensors = Sensor.objects.filter(UserId_id=id)
         sensor_serializer = SensorSerializer(sensors, many=True)
+        return JsonResponse(sensor_serializer.data, safe=False)
 
     elif request.method == 'POST':
-        sensor_data = JSONParser().parse()
+        sensor_data = JSONParser().parse(request)
         sensor_serializer = SensorSerializer(data=sensor_data)
         if sensor_serializer.is_valid():
             sensor_serializer.save()
@@ -63,14 +66,15 @@ def sensorApi(request, id=0):
         sensor.delete()
         return JsonResponse("Deleted sensor", safe = False)
 
-
+@csrf_exempt
 def readingApi(request, id=0):
     if request.method == 'GET':
         readings = Reading.objects.all()
         reading_serializer = ReadingSerializer(readings, many=True)
+        return JsonResponse(reading_serializer.data, safe=False)
 
     elif request.method == 'POST':
-        reading_data = JSONParser().parse()
+        reading_data = JSONParser().parse(request)
         reading_serializer = ReadingSerializer(data=reading_data)
         if reading_serializer.isvalid():
             reading_serializer.save()

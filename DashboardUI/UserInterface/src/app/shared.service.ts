@@ -25,8 +25,8 @@ export class SharedService {
   
   //---------SENSOR SERVICES---------//
   //return list of sensors
-  getSensorList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + '/sensor/');
+  getSensorList(val:any){
+    return this.http.get<any[]>(this.APIUrl + '/sensor/'+ val);
   }
 
   //update sensor

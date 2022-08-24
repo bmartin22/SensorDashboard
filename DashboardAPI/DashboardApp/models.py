@@ -9,7 +9,7 @@ class Sensor(models.Model):
     SensorId = models.AutoField(primary_key=True)
     SensorName = models.CharField(max_length=100)
     SensorLocation = models.CharField(max_length=100, null=True)
-    SetupDate = models.DateField(null=True)
+    SetupDate = models.DateField(auto_now_add=True, null=True)
     UserId = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
 
 class User(models.Model):
@@ -17,7 +17,7 @@ class User(models.Model):
     UserForename = models.CharField(max_length=100, null=True)
     UserSurname = models.CharField(max_length=100, null=True)
     UserEmail = models.CharField(max_length=100)
-    UserJoinDate =  models.DateField(null=True)
+    UserJoinDate =  models.DateField(auto_now_add=True, null=True)
     
 class Reading(models.Model):
     ReadingId = models.AutoField(primary_key=True)
