@@ -20,4 +20,26 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-striped">
+        <thead>
+            <th>ReadingId</th>
+            <th>Value</th>
+            <th>ReadTime</th>
+            <th>SensorId</th>
+            <th>Options</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dataItem of ReadingList">
+                <td>{{dataItem.ReadingId}}</td>
+                <td>{{dataItem.ReadingValue}}</td>
+                <td>{{dataItem.ReadTime}}</td>
+                <td>{{dataItem.SensorId}}</td>
+                <td> 
+                    <button type="button" class="btn btn-light mr-1">Edit</button>
+                    <button type="button" class="btn btn-light mr-1">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <app-show-chart></app-show-chart>
 </div>

@@ -56,7 +56,7 @@ def sensorApi(request, id=0):
         sensor_data  = JSONParser().parse(request)
         sensor = Sensor.objects.get(SensorId = sensor_data['SensorId'])
         sensor_serializer = SensorSerializer(sensor, data=sensor_data)
-        if sensor_serializer.isvalid():
+        if sensor_serializer.is_valid():
             sensor_serializer.save()
             return JsonResponse("Sensor updated successfully!", safe=False)
         return JsonResponse("Failed to update sensor", safe = False)
@@ -69,17 +69,20 @@ def sensorApi(request, id=0):
 @csrf_exempt
 def readingApi(request, id=0):
     if request.method == 'GET':
-        readings = Reading.objects.all()
+        if id==0:
+            readings = Reading.objects.all()
+        else:
+            readings = Reading.objects.filter(SensorId_id=id)
         reading_serializer = ReadingSerializer(readings, many=True)
         return JsonResponse(reading_serializer.data, safe=False)
 
     elif request.method == 'POST':
         reading_data = JSONParser().parse(request)
         reading_serializer = ReadingSerializer(data=reading_data)
-        if reading_serializer.isvalid():
+        if reading_serializer.is_valid():
             reading_serializer.save()
             return JsonResponse("Reading added successfully!", safe=False)
-        return JsonResponse("Failed to add reading!", safe = False)
+        return JsonResponse("Failed to add reading!", safe=False)
 
     elif request.method == 'PUT':
         reading_data = JSONParser.parse(request)

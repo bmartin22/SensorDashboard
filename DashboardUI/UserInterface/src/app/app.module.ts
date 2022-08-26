@@ -13,6 +13,7 @@ import { SharedService } from './shared.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ShowChartComponent } from './dashboard/show-chart/show-chart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ShowDashboardComponent,
     AddEditDashboardComponent,
     ShowSettingsComponent,
-    AddEditSettingsComponent
+    AddEditSettingsComponent,
+    ShowChartComponent
   ],
   imports: [
     BrowserModule,

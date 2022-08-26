@@ -9,9 +9,9 @@ class UserSerializer(serializers.ModelSerializer):
 class SensorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sensor
-        fields = ('SensorId', 'SensorName', 'SensorLocation', 'SetupDate', 'UserId')
+        fields = ('SensorId', 'SensorName', 'SensorLocation', 'SensorUnit', 'SetupDate', 'UserId')
 
 class ReadingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reading
-        fields = ('ReadingId', 'Value', 'ReadTime', 'SensorId')
+        fields = ('ReadingId', 'ReadingValue', 'ReadTime', 'SensorId')

@@ -46,14 +46,13 @@ export class SharedService {
 
   //---------READING SERVICES---------//
   //return list of readings
-  getReadingList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + '/reading/');
+  getReadingList(val:any){
+    return this.http.get<any[]>(this.APIUrl + '/reading/', val);
   }
 
   //delete reading
   deleteReading(val:any){
     return this.http.delete(this.APIUrl + '/delete/'+val);
   }
-
   //
 }
