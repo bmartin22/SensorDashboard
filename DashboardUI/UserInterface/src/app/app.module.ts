@@ -7,13 +7,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ShowDashboardComponent } from './dashboard/show-dashboard/show-dashboard.component';
 import { AddEditDashboardComponent } from './dashboard/add-edit-dashboard/add-edit-dashboard.component';
-import { ShowSettingsComponent } from './settings/show-settings/show-settings.component';
-import { AddEditSettingsComponent } from './settings/add-edit-settings/add-edit-settings.component';
+import { ShowSensorSettingsComponent } from './settings/show-sensor-settings/show-sensor-settings.component';
+import { AddEditSensorSettingsComponent } from './settings/add-edit-sensor-settings/add-edit-sensor-settings.component';
 import { SharedService } from './shared.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ShowChartComponent } from './dashboard/show-chart/show-chart.component';
+import { ShowAlertSettingsComponent } from './settings/show-alert-settings/show-alert-settings.component';
+import { AddEditAlertSettingsComponent } from './settings/add-edit-alert-settings/add-edit-alert-settings.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,11 @@ import { ShowChartComponent } from './dashboard/show-chart/show-chart.component'
     SettingsComponent,
     ShowDashboardComponent,
     AddEditDashboardComponent,
-    ShowSettingsComponent,
-    AddEditSettingsComponent,
-    ShowChartComponent
+    ShowSensorSettingsComponent,
+    AddEditSensorSettingsComponent,
+    ShowChartComponent,
+    ShowAlertSettingsComponent,
+    AddEditAlertSettingsComponent
   ],
   imports: [
     BrowserModule,

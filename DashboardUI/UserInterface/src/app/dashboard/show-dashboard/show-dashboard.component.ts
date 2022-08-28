@@ -28,6 +28,7 @@ export class ShowDashboardComponent implements OnInit {
     this.service.getSensorList(val).subscribe(data=>
       {
         this.SensorList=data;
+        this.data.changeSensorData(this.SensorList)
       })
       this.refreshReadingList();
   }

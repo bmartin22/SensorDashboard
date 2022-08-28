@@ -1,0 +1,23 @@
+<table class="table table-striped">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Setup Date</th>
+        <td>Measurement Unit</td>
+        <th>Options</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of SensorList">
+            <td>{{dataItem.SensorId}}</td>
+            <td>{{dataItem.SensorName}}</td>
+            <td>{{dataItem.SensorLocation}}</td>
+            <td>{{dataItem.SetupDate}}</td>
+            <td>{{dataItem.SensorUnit}}</td>
+            <td> 
+                <button type="button" class="btn btn-light mr-1">Edit</button>
+                <button type="button" class="btn btn-light mr-1">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

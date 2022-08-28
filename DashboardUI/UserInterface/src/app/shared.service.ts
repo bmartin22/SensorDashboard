@@ -54,5 +54,26 @@ export class SharedService {
   deleteReading(val:any){
     return this.http.delete(this.APIUrl + '/delete/'+val);
   }
-  //
+
+   //---------READING SERVICES---------//
+   //return list of alert profiles
+   getAlertProfileList(val:any){
+    return this.http.get<any[]>(this.APIUrl + '/alert_profile/' + val);
+   }
+
+   //add alert profile
+   addAlertProfile(val:any){
+    return this.http.post(this.APIUrl + '/alert_profile/', val);
+   }
+
+   //update alert profile
+   updateAlertProfile(val:any){
+    return this.http.put(this.APIUrl + '/alert_profile/', val);
+   }
+   
+   //delete alert profile
+   deleteAlertProfile(val:any){
+    return this.http.delete(this.APIUrl + '/alert_profile/'+val);
+   }
+
 }

@@ -29,6 +29,7 @@ class Reading(models.Model):
 
 class AlertProfile(models.Model):
     AlertProfileId = models.AutoField(primary_key=True)
+    AlertProfileName = models.CharField(max_length=100, null=True)
     HighThreshold = models.DecimalField(max_digits=10, decimal_places=4, null=True)
     TargetValue = models.DecimalField(max_digits=10, decimal_places=4, null=True)
     LowThreshold = models.DecimalField(max_digits=10, decimal_places=4, null=True)

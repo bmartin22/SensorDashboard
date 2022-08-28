@@ -1,27 +1,6 @@
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Setup Date</th>
-            <th>Options</th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let dataItem of SensorList">
-                <td>{{dataItem.SensorId}}</td>
-                <td>{{dataItem.SensorName}}</td>
-                <td>{{dataItem.SensorLocation}}</td>
-                <td>{{dataItem.SetupDate}}</td>
-                <td> 
-                    <button type="button" class="btn btn-light mr-1">Edit</button>
-                    <button type="button" class="btn btn-light mr-1">Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-striped">
-        <thead>
             <th>ReadingId</th>
             <th>Value</th>
             <th>ReadTime</th>

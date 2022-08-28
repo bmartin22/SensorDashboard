@@ -1,0 +1,40 @@
+
+<div class="modal fade" role="dialog" tabindex="-1" style="display:blockl">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{ModalTitle}}</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+                    <span aria-hidden="true">x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-add-edit-alert-settings [alertProf]="alertProf" *ngIf="ActivateAddEditAlertSettingsComp"></app-add-edit-alert-settings>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-light mr-1" (click)="addClick()">Add Alert Profile</button>
+<table class="table table-striped">
+    <thead>
+        <th>Profile ID</th>
+        <th>High Threshold</th>
+        <th>Ideal Value</th>
+        <th>Low Threshold</th>
+        <td>Alert Email</td>
+        <th>Options</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of AlertProfileList">
+            <td>{{dataItem.AlertProfileId}}</td>
+            <td>{{dataItem.HighThreshold}}</td>
+            <td>{{dataItem.TargetValue}}</td>
+            <td>{{dataItem.LowThreshold}}</td>
+            <td>{{dataItem.AlertEmail}}</td>
+            <td> 
+                <button type="button" class="btn btn-light mr-1">Edit</button>
+                <button type="button" class="btn btn-light mr-1">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
