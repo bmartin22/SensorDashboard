@@ -28,25 +28,44 @@ export class ShowDashboardComponent implements OnInit {
     this.service.getSensorList(val).subscribe(data=>
       {
         this.SensorList=data;
-        this.refreshReadingList(data);
       })
-    
+      this.refreshReadingList();
   }
 
-  refreshReadingList(SensorDump:any){
-    console.log(this.SensorList);
+  refreshReadingList(){
     var SensorIds:any = [];
-    SensorDump.forEach(function(sensorItem:any){
+    this.SensorList.forEach(function(sensorItem:any){
       SensorIds.push(sensorItem.SensorId);
     });
+    var readings:any;
     this.service.getReadingList(SensorIds).subscribe(data =>{
-      this.ReadingList=data;
-      this.updateChartData(this.ReadingList);
+      readings=data;
+      this.joinReadingSensors(readings);
     });
   }
 
-  updateChartData(newChartData:any){
-    newChartData = this.ReadingList;
+  joinReadingSensors(latestReadingList:any){
+    var latestSensorList = this.SensorList;
+    latestReadingList.forEach(function(readingItem:any){
+      var readSensorId = readingItem.SensorId;
+      var readSensorName:any;
+      //iterate over sensor objects to find the sensor with the same SensorId as the reading in scope
+      latestSensorList.forEach(function(sensorItem:any){
+        if (sensorItem.SensorId == readSensorId){
+          readSensorName = sensorItem.SensorName;
+          console.log(readSensorName);
+          return;
+        }
+      });
+      readingItem.SensorName = readSensorName;
+    });
+    this.ReadingList = latestReadingList;
+    console.log(this.ReadingList);
+    this.updateChartData();
+  }
+
+  updateChartData(){
+    var newChartData = this.ReadingList;
     this.data.changeChartData(newChartData);
   }
 }

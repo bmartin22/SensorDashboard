@@ -1,7 +1,9 @@
 from django.urls import re_path
 from DashboardApp import views
-from django.conf.urls.static import static
-from django.conf import settings
+#from django.conf.urls.static import static
+#from django.conf import settings
+
+
 
 urlpatterns=[
     re_path(r'^user/$',views.userApi),
@@ -12,6 +14,9 @@ urlpatterns=[
 
     re_path(r'^reading/$',views.readingApi),
     re_path(r'^reading/([0-9]+)$',views.readingApi),
+
+    re_path(r'^alert_profile/$',views.readingApi),
+    re_path(r'^alert_profile/([0-9]+)$',views.readingApi)
 
     #re_path(r'^savefile/',views.saveFile)
 ]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

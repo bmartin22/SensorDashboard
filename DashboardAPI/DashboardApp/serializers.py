@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from DashboardApp.models import User,Sensor,Reading
+from DashboardApp.models import AlertProfile, User, Sensor, Reading
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,9 +9,16 @@ class UserSerializer(serializers.ModelSerializer):
 class SensorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sensor
-        fields = ('SensorId', 'SensorName', 'SensorLocation', 'SensorUnit', 'SetupDate', 'UserId')
+        fields = ('SensorId', 'SensorName', 'SensorLocation', 'SensorUnit', 'SetupDate', 'UserId', 'AlertProfileId')
 
 class ReadingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reading
-        fields = ('ReadingId', 'ReadingValue', 'ReadTime', 'SensorId')
+        fields = ('ReadingId', 'ReadingValue', 'ReadTime' , 'SensorId')
+
+class AlertProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AlertProfile
+        fields = ('AlertProfileId', 'HighThreshold', 'TargetValue', 'LowThreshold', 'AlertEmail')
+
+
