@@ -1,10 +1,12 @@
 
+<button type="button" class="btn btn-light mr-1" (click)="addSensorClick()">Add Alert Profile</button>
+<!-- Modal -->
 <div class="modal fade" role="dialog" tabindex="-1" style="display:blockl">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">{{ModalTitle}}</h4>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+                <button type="button" class="btn-close" type="button" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
                     <span aria-hidden="true">x</span>
                 </button>
             </div>
@@ -14,7 +16,8 @@
         </div>
     </div>
 </div>
-<button type="button" class="btn btn-light mr-1" (click)="addClick()">Add Alert Profile</button>
+
+<!-- Alert Profiles -->
 <table class="table table-striped">
     <thead>
         <th>Profile ID</th>

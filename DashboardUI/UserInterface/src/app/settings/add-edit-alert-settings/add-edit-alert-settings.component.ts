@@ -33,6 +33,20 @@ export class AddEditAlertSettingsComponent implements OnInit {
     }
     this.service.addAlertProfile(newProfile).subscribe(res=>{
       alert(res.toString())
-    })
+    });
+  }
+
+  updateAlertProfile(){
+    var updatedProfile = {
+      AlertProfileId:this.AlertProfileId,
+      AlertProfileName:this.AlertProfileName,
+      HighThreshold:this.HighThreshold,
+      TargetValue:this.TargetValue,
+      LowThreshold:this.LowThreshold,
+      AlertEmail:this.AlertEmail
+    }
+    this.service.updateAlertProfile(updatedProfile).subscribe(res =>{
+      alert(res.toString())
+    });
   }
 }

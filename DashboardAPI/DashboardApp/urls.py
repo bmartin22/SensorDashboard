@@ -15,8 +15,8 @@ urlpatterns=[
     re_path(r'^reading/$',views.readingApi),
     re_path(r'^reading/([0-9]+)$',views.readingApi),
 
-    re_path(r'^alert_profile/$',views.readingApi),
-    re_path(r'^alert_profile/([0-9]+)$',views.readingApi)
+    re_path(r'^alert_profile/$',views.alertProfileApi),
+    re_path(r'^alert_profile/([0-9]+)$',views.alertProfileApi)
 
     #re_path(r'^savefile/',views.saveFile)
 ]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

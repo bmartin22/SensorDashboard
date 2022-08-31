@@ -88,7 +88,7 @@ def readingApi(request, id=0):
         reading_data = JSONParser.parse(request)
         reading = Reading.objects.get(id=reading_data['ReadingId'])
         reading_serializer = ReadingSerializer(reading, data = reading_data)
-        if reading_serializer.isvalid():
+        if reading_serializer.is_valid():
             reading_serializer.save()
             return JsonResponse("Reading updated successfuly", safe=False)
         return JsonResponse("Failed to update reading!", safe=False)
@@ -102,8 +102,11 @@ def readingApi(request, id=0):
 @csrf_exempt
 def alertProfileApi(request, id=0):
     if request.method == 'GET':
-        alertProfile = AlertProfile.objects.filter(AlertProfileId=id)
-        alert_profile_serializer = AlertProfileSerializer(data=alertProfile)
+        if id == 0:
+            alertProfile = AlertProfile.objects.all()
+        else:
+            alertProfile = AlertProfile.objects.filter(AlertProfileId=id)
+        alert_profile_serializer = AlertProfileSerializer(alertProfile, many=True)
         return JsonResponse(alert_profile_serializer.data, safe=False)
 
     elif request.method == 'POST':

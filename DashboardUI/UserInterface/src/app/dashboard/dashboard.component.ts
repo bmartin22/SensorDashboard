@@ -7,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class DashboardComponent implements OnInit {
-
+ 
   constructor() { }
 
   ngOnInit(): void {
 
   }
   
+}
+
+export class GlobalVariables{
+  public static sessionUserId = 1;
 }

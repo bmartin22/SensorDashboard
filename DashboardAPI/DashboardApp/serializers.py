@@ -19,6 +19,6 @@ class ReadingSerializer(serializers.ModelSerializer):
 class AlertProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = AlertProfile
-        fields = ('AlertProfileId', 'HighThreshold', 'TargetValue', 'LowThreshold', 'AlertEmail')
+        fields = ('AlertProfileId', 'AlertProfileName', 'HighThreshold', 'TargetValue', 'LowThreshold', 'AlertEmail')
 
 

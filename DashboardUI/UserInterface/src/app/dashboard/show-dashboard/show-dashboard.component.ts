@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "../../data.service";
 import { SharedService } from 'src/app/shared.service';
+import { GlobalVariables } from '../dashboard.component';
 
 @Component({
   selector: 'app-show-dashboard',
@@ -19,7 +20,7 @@ export class ShowDashboardComponent implements OnInit {
   chartData:any=[];
 
   ngOnInit(): void {
-    this.refreshSensorList({"UserId": 1}); //change this later to pull user id from login page
+    this.refreshSensorList({"UserId":  GlobalVariables.sessionUserId}); //change this later to pull user id from login page
     this.data.currentChartData.subscribe( chartData => this.chartData = chartData )
   }
 

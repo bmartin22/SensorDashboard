@@ -58,7 +58,7 @@ export class SharedService {
    //---------READING SERVICES---------//
    //return list of alert profiles
    getAlertProfileList(val:any){
-    return this.http.get<any[]>(this.APIUrl + '/alert_profile/' + val);
+    return this.http.get<any[]>(this.APIUrl + '/alert_profile/', val);
    }
 
    //add alert profile
