@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowChartComponent } from './show-chart.component';
+import { ShowChartComponent } from './show-chart.component.bak';
 
 describe('ShowChartComponent', () => {
   let component: ShowChartComponent;

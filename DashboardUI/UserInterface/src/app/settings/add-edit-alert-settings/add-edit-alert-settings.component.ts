@@ -1,3 +1,4 @@
+import { HttpResponseBase } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
@@ -20,7 +21,14 @@ export class AddEditAlertSettingsComponent implements OnInit {
 
 
   ngOnInit(): void {
+      this.AlertProfileId=this.alertProf.AlertProfileId;
+      this.AlertProfileName=this.alertProf.AlertProfileName;
+      this.HighThreshold=this.alertProf.HighThreshold;
+      this.TargetValue=this.alertProf.TargetValue;
+      this.LowThreshold=this.alertProf.LowThreshold;
+      this.AlertEmail=this.alertProf.AlertEmail;
   }
+
 
   addAlertProfile(){
     var newProfile = {
@@ -45,8 +53,8 @@ export class AddEditAlertSettingsComponent implements OnInit {
       LowThreshold:this.LowThreshold,
       AlertEmail:this.AlertEmail
     }
-    this.service.updateAlertProfile(updatedProfile).subscribe(res =>{
-      alert(res.toString())
+    this.service.updateAlertProfile(updatedProfile).subscribe(resp =>{
+      alert(resp.toString())
     });
   }
 }

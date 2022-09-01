@@ -16,14 +16,15 @@ export class ShowAlertSettingsComponent implements OnInit {
   SensorList:any = [];
 
   ModalTitle:string="";
-  ActivateAddEditAlertSettingsComp:boolean=false;
+  ActivateAddEditAlertSettings:boolean=false;
   alertProf:any;
 
   ngOnInit(): void {
     this.refreshSensorList({"UserId": GlobalVariables.sessionUserId})
   }
 
-  addSensorClick(){
+  addAlertProfileClick(){
+    console.log("button pressed");
     this.alertProf={
       AlertProfileId:0,
       AlertProfileName:"",
@@ -33,7 +34,7 @@ export class ShowAlertSettingsComponent implements OnInit {
       AlertEmail:""
     }
     this.ModalTitle = "Add Alert Profile";
-    this.ActivateAddEditAlertSettingsComp = true;
+    this.ActivateAddEditAlertSettings = true;
   }
 
   //get data on all sensors
@@ -47,14 +48,24 @@ export class ShowAlertSettingsComponent implements OnInit {
       })
   }
 
-  editClick(item:any){
+  editAlertProfileClick(item:any){
     this.alertProf=item;
     this.ModalTitle = "Modify Alert Profile";
-    this.ActivateAddEditAlertSettingsComp = true;
+    this.ActivateAddEditAlertSettings = true;
+  }
+
+  deleteAlertProfileClick(item:any){
+    var val = item.AlertProfileId;
+    if(confirm ('Are you sure you want to delete alert profile "' + item.AlertProfileName + '" (Profile ID: ' + val + ')?')){
+      this.service.deleteAlertProfile(val).subscribe(resp => {
+        alert(resp.toString());
+        this.refreshAlertProfileList();
+      })
+    }
   }
 
   closeClick(){
-    this.ActivateAddEditAlertSettingsComp = false;
+    this.ActivateAddEditAlertSettings = false;
     //this.refreshAlertProfileList({"UserId":1});
     this.refreshAlertProfileList();
   }

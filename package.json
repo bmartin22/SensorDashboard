@@ -1,10 +1,16 @@
 {
   "dependencies": {
+    "@angular/cdk": "^13.3.9",
+    "@swimlane/ngx-charts": "^20.1.0",
     "boostrap": "^2.0.0",
     "chart.js": "^3.9.1",
     "chartjs-adapter-moment": "^1.0.0",
+    "d3": "^7.6.1",
     "moment": "^2.29.4",
-    "ng2-charts": "^4.0.0",
+    "ng-chartjs": "^0.2.5",
     "rxjs": "^7.5.6"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.0"
   }
 }

@@ -4,10 +4,12 @@ from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from django.core.files.storage import default_storage
 
-from DashboardApp.models import AlertProfile, User, Sensor, Reading
-from DashboardApp.serializers import UserSerializer, SensorSerializer, ReadingSerializer, AlertProfileSerializer
+from DashboardApp.models import Alert, AlertProfile, User, Sensor, Reading
+from DashboardApp.serializers import UserSerializer, SensorSerializer, ReadingSerializer, AlertProfileSerializer, AlertSerializer
 
-# Create your views here.
+#Adapted from https://github.com/ArtOfEngineer/PythonDjangoAngular10/blob/master/DjangoAPI/EmployeeApp/views.py
+
+#user view
 @csrf_exempt
 def userApi(request, id=0):
     if request.method == 'GET':
@@ -36,7 +38,7 @@ def userApi(request, id=0):
         user=User.objects.get(UserId=id)
         user.delete()
         return JsonResponse("Deleted user", safe=False)
-
+#sensor view
 @csrf_exempt
 def sensorApi(request, id=0):
     if request.method == 'GET':
@@ -65,7 +67,7 @@ def sensorApi(request, id=0):
         sensor=Sensor.objects.get(SensorId = id)
         sensor.delete()
         return JsonResponse("Deleted sensor", safe = False)
-
+#reading view
 @csrf_exempt
 def readingApi(request, id=0):
     if request.method == 'GET':
@@ -85,7 +87,7 @@ def readingApi(request, id=0):
         return JsonResponse("Failed to add reading!", safe=False)
 
     elif request.method == 'PUT':
-        reading_data = JSONParser.parse(request)
+        reading_data = JSONParser().parse(request)
         reading = Reading.objects.get(id=reading_data['ReadingId'])
         reading_serializer = ReadingSerializer(reading, data = reading_data)
         if reading_serializer.is_valid():
@@ -98,7 +100,7 @@ def readingApi(request, id=0):
         reading.delete()
         return JsonResponse("Reading Deleted!", safe=False)
 
-
+#alert profile view
 @csrf_exempt
 def alertProfileApi(request, id=0):
     if request.method == 'GET':
@@ -118,7 +120,7 @@ def alertProfileApi(request, id=0):
         return JsonResponse("Failed to add alert profile!", safe=False)
 
     elif request.method == 'PUT':
-        alert_profile_data = JSONParser.parse(request)
+        alert_profile_data = JSONParser().parse(request)
         alertProfile = AlertProfile.objects.get(AlertProfileId = alert_profile_data['AlertProfileId'])
         alert_profile_serializer = AlertProfileSerializer(alertProfile, data=alert_profile_data)
         if alert_profile_serializer.is_valid():
@@ -130,4 +132,32 @@ def alertProfileApi(request, id=0):
         alertProfile=AlertProfile.objects.get(AlertProfileId = id)
         alertProfile.delete()
         return JsonResponse("Deleted alert profile", safe=False)
+#alert view
+@csrf_exempt
+def alertApi(request, id=0):
+    if request.method == 'GET':
+        alerts = Alert.objects.all()
+        alert_serializer = AlertSerializer(alerts, many=True)
+        return JsonResponse(alert_serializer.data, safe=False)
 
+    elif request.method == 'POST':
+        alert_data=JSONParser().parse(request)
+        alert_serializer = AlertSerializer(data=alert_data)
+        if alert_serializer.is_valid():
+            alert_serializer.save()
+            return JsonResponse("Alert added successfully!", safe = False)
+        return JsonResponse("Failed to add alert", safe=False)
+
+    elif request.method == 'PUT':
+        alert_data = JSONParser().parse(request)
+        alert=Alert.objects.get(AlertId = alert_data['AlertId'])
+        alert_serializer=AlertSerializer(alert, data=alert_data)
+        if alert_serializer.is_valid():
+            alert_serializer.save()
+            return JsonResponse("Alert updated successfully!", safe=False)
+        return JsonResponse("Failed to update alert", safe=False)
+
+    elif request.method == 'DELETE':
+        alert=Alert.objects.get(AlertId=id)
+        alert.delete()
+        return JsonResponse("Deleted alert", safe=False)

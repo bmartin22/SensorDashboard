@@ -1,33 +1,36 @@
-<div class="d-flex flex-row bd-highlight mb-3">
-    <div class="form-group row" style="width: 60%;">
-
-        <label class="col-sm-2 col-form-label">Alert Profile Name</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" [(ngModel)]="AlertProfileName" placeholder="Enter Alert Profile Name">
-        </div>
-
-        <label class="col-sm-2 col-form-label">High Threshold</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" [(ngModel)]="HighThreshold" placeholder="Enter High Threshold Value">
-        </div>
-
-        <label class="col-sm-2 col-form-label">Target Value</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" [(ngModel)]="TargetValue" placeholder="Enter Target Value">
-        </div>
-
-        <label class="col-sm-2 col-form-label">Low Threshold</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" [(ngModel)]="LowThreshold" placeholder="Enter Low Threshold Value">
-        </div>
-
-        <label class="col-sm-2 col-form-label">Alert Email Address</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" [(ngModel)]="AlertEmail" placeholder="Enter Alert Email Address">
-        </div>
-
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label">Alert Name</label>
+    <div class="col-sm-6">
+        <input type="text" class="form-control" [(ngModel)]="AlertProfileName" placeholder="Enter Alert Profile Name">
     </div>
-    
-        <button (click)="addAlertProfile()" *ngIf="alertProf.AlertProfileId==0" class="btn btn-primary">Add</button>
-        <button (click)="updateAlertProfile()" *ngIf="alertProf.AlertProfileId!=0" class="btn btn-primary">Update</button>
+</div>    
+
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label">High Threshold</label>
+    <div class="col-sm-6">
+    <input type="text" class="form-control" [(ngModel)]="HighThreshold" placeholder="Enter High Threshold Value">
+    </div>
 </div>
+
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label">Target Value</label>
+    <div class="col-sm-6">
+    <input type="text" class="form-control" [(ngModel)]="TargetValue" placeholder="Enter Target Value">
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label">Low Threshold</label>
+    <div class="col-sm-6">
+    <input type="text" class="form-control" [(ngModel)]="LowThreshold" placeholder="Enter Low Threshold Value">
+</div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label">Alert Email</label>
+    <div class="col-sm-6">
+    <input type="text" class="form-control" [(ngModel)]="AlertEmail" placeholder="Enter Alert Email Address">
+</div>
+</div>
+<div class="form-group row">
+    <button (click)="addAlertProfile()" *ngIf="alertProf.AlertProfileId==0" class="btn btn-primary">Add</button>
+    <button (click)="updateAlertProfile()" *ngIf="alertProf.AlertProfileId!=0" class="btn btn-primary">Update</button>
+</div>  

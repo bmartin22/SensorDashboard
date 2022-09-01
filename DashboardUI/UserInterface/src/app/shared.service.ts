@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 import { Observable } from 'rxjs';
 
+// common shared service implementation adapted from https://github.com/ArtOfEngineer/PythonDjangoAngular10/blob/master/ui/angular10/src/app/shared.service.ts
 
 @Injectable({
   providedIn: 'root'

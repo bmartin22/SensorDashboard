@@ -17,6 +17,7 @@ import { ShowChartComponent } from './dashboard/show-chart/show-chart.component'
 import { ShowAlertSettingsComponent } from './settings/show-alert-settings/show-alert-settings.component';
 import { AddEditAlertSettingsComponent } from './settings/add-edit-alert-settings/add-edit-alert-settings.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,6 +1,5 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { DataService } from "../../data.service";
-import 'chartjs-adapter-moment';
 import { Chart, LinearScale, BarController, LineController, CategoryScale, BarElement, LineElement, PointElement, TimeScale } from 'chart.js';
 
 @Component({
@@ -9,7 +8,7 @@ import { Chart, LinearScale, BarController, LineController, CategoryScale, BarEl
   styleUrls: ['./show-chart.component.css']
 })
 
-
+@Input()
 
 export class ShowChartComponent implements OnInit {
   

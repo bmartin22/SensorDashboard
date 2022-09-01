@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from DashboardApp.models import AlertProfile, User, Sensor, Reading
+from DashboardApp.models import Alert, AlertProfile, User, Sensor, Reading
 
+#adpated from https://github.com/ArtOfEngineer/PythonDjangoAngular10/blob/master/DjangoAPI/EmployeeApp/serializers.py
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -21,4 +22,7 @@ class AlertProfileSerializer(serializers.ModelSerializer):
         model = AlertProfile
         fields = ('AlertProfileId', 'AlertProfileName', 'HighThreshold', 'TargetValue', 'LowThreshold', 'AlertEmail')
 
-
+class AlertSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Alert
+        fields = ('AlertId','AlertReading','UserSurname','SensorId','AlertTime')
