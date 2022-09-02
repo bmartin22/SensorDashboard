@@ -19,9 +19,30 @@ export class ShowDashboardComponent implements OnInit {
   ReadingList:any=[];
   chartData:any=[];
 
+  ModalTitle:string="";
+  ActivateReadingEdit:boolean=false;
+  reading:any;
+
   ngOnInit(): void {
     this.refreshSensorList({"UserId":  GlobalVariables.sessionUserId}); //change this later to pull user id from login page
     this.data.currentChartData.subscribe( chartData => this.chartData = chartData )
+  }
+
+  editReadingClick(item:any){
+    this.reading=item;
+    this.ModalTitle="Modify Reading";
+    this.ActivateReadingEdit=true;
+  }
+
+  deleteReadingClick(item:any){
+    var val = item.ReadingId;
+    if(confirm ('Are you sure you want to delete reading "' + item.DeadingValue + '" (Reading  ID: ' + val + ')?')){
+      this.service.deleteReading(val).subscribe(resp => {
+        alert(resp.toString());
+        this.refreshSensorList({"UserId":  GlobalVariables.sessionUserId});
+      })
+    }
+    this.ActivateReadingEdit = false;
   }
 
   refreshSensorList(item: any){
@@ -32,6 +53,11 @@ export class ShowDashboardComponent implements OnInit {
         this.data.changeSensorData(this.SensorList)
       })
       this.refreshReadingList();
+  }
+
+  closeClick(){
+    this.ActivateReadingEdit = false;
+    this.refreshSensorList({"UserId":  GlobalVariables.sessionUserId});
   }
 
   refreshReadingList(){

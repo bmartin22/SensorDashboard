@@ -88,7 +88,7 @@ def readingApi(request, id=0):
 
     elif request.method == 'PUT':
         reading_data = JSONParser().parse(request)
-        reading = Reading.objects.get(id=reading_data['ReadingId'])
+        reading = Reading.objects.get(ReadingId=reading_data['ReadingId'])
         reading_serializer = ReadingSerializer(reading, data = reading_data)
         if reading_serializer.is_valid():
             reading_serializer.save()

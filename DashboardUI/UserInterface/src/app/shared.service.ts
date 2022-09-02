@@ -51,9 +51,14 @@ export class SharedService {
     return this.http.get<any[]>(this.APIUrl + '/reading/', val);
   }
 
+  //update reading
+  updateReading(val:any){
+    return this.http.put(this.APIUrl + '/reading/',val);
+  }
+
   //delete reading
   deleteReading(val:any){
-    return this.http.delete(this.APIUrl + '/delete/'+val);
+    return this.http.delete(this.APIUrl + '/reading/'+val);
   }
 
    //---------READING SERVICES---------//

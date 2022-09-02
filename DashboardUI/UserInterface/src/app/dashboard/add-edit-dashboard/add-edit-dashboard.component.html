@@ -1,1 +1,9 @@
-<p>add-edit-dashboard works!</p>
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label">Reading Value</label>
+    <div class="col-sm-6">
+        <input type="text" class="form-control" [(ngModel)]="ReadingValue" placeholder="Enter Alert Profile Name">
+    </div>
+</div>    
+<div class="form-group row">
+    <button (click)="updateReading()" *ngIf="reading.ReadingId!=0" class="btn btn-primary">Update</button>
+</div>  

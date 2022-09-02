@@ -10,7 +10,7 @@ import { GlobalVariables } from 'src/app/dashboard/dashboard.component';
 })
 export class ShowAlertSettingsComponent implements OnInit {
 
-  constructor(private service:SharedService, private data:DataService) { }
+  constructor(private service:SharedService) { }
 
   AlertProfileList:any = [];
   SensorList:any = [];
@@ -24,7 +24,6 @@ export class ShowAlertSettingsComponent implements OnInit {
   }
 
   addAlertProfileClick(){
-    console.log("button pressed");
     this.alertProf={
       AlertProfileId:0,
       AlertProfileName:"",
@@ -43,7 +42,6 @@ export class ShowAlertSettingsComponent implements OnInit {
     this.service.getSensorList(val).subscribe(data=>
       {
         this.SensorList=data;
-        console.log(this.SensorList);
         this.refreshAlertProfileList();
       })
   }

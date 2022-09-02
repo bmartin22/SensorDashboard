@@ -1,4 +1,24 @@
 <app-show-chart></app-show-chart>
+
+<!-- Modal -->
+<div class="modal fade" id="ReadingModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-l">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{ModalTitle}}</h4>
+                <button type="button" class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-add-edit-dashboard [reading]="reading" *ngIf="ActivateReadingEdit"></app-add-edit-dashboard>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Readings Table -->
+<h5>Sensor Readings</h5>
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -15,8 +35,8 @@
                 <td>{{dataItem.ReadTime}}</td>
                 <td>{{dataItem.SensorName}}</td>
                 <td> 
-                    <button type="button" class="btn btn-light mr-1" style="margin-left:10px;"><i class="bi bi-pencil"></i></button>
-                    <button type="button" class="btn btn-light mr-1" style="margin-left:10px;"><i class="bi bi-trash"></i></button>
+                    <button type="button" class="btn btn-light mr-1" style="margin-left:10px;" data-bs-toggle="modal" (click)="editReadingClick(dataItem)" data-bs-target="#ReadingModal"><i class="bi bi-pencil"></i></button>
+                    <button type="button" class="btn btn-light mr-1" style="margin-left:10px;" (click)="deleteReadingClick(dataItem)"><i class="bi bi-trash" ></i></button>
                 </td>
             </tr>
         </tbody>

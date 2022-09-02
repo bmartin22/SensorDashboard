@@ -1,1 +1,25 @@
-<p>add-edit-settings works!</p>
+
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label">Name</label>
+    <div class="col-sm-6">
+        <input type="text" class="form-control" [(ngModel)]="SensorName" placeholder="Enter Sensor Name">
+    </div>
+</div>    
+
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label">Location</label>
+    <div class="col-sm-6">
+    <input type="text" class="form-control" [(ngModel)]="SensorLocation" placeholder="Enter Sensor Location">
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label">Measurement Unit</label>
+    <div class="col-sm-6">
+    <input type="text" class="form-control" [(ngModel)]="SensorUnit" placeholder="Enter Measurement Unit">
+    </div>
+</div>
+<div class="form-group row">
+    <button (click)="addSensor()" *ngIf="sense.SensorId==0" class="btn btn-primary">Add</button>
+    <button (click)="updateSensor()" *ngIf="sense.SensorId!=0" class="btn btn-primary">Update</button>
+</div>  
